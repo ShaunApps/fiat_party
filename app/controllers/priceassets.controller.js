@@ -43,7 +43,7 @@ module.exports = {
         if (!error) {
           var body = JSON.parse(body);
           var data = body[0];
-          console.log(data.price_usd);
+          
 
 
         }
