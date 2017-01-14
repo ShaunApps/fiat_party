@@ -1,59 +1,33 @@
 
-var request = require('request');
+const request = require('request');
 
 
 module.exports = {
 
-  // getValues: (req, res) => {
-  //
-  //   var request = require('request');
-  //
-  //   var makeRequest = () => {
-  //     var assetName = "bitcrystals";
-  //     var url = "https://api.coinmarketcap.com/v1/ticker/" + assetName;
-  //
-  //
-  //
-  //     function callback(error, response, body) {
-  //       if (!error && response.statusCode == 200) {
-  //         var body = JSON.parse(body);
-  //         var data = body["data"];
-  //
-  //
-  //       }
-  //
-  //     }
-  //     request(url, callback);
-  //  }
-  //
-  //
-  //  makeRequest();
-  // }
+  get_USD_AMNT: (assets) => {
 
-  get_USD_AMNT: (req, res) => {
+  var assets_with_price =[];
+
+   for (let i =0; i < assets.length; i++) {
+
+     var url = "https://api.coinmarketcap.com/v1/ticker/" + assets[i].name.toLowerCase();
+     var amount = parseFloat(assets[i].amount);
 
 
+     request(url, function(error, response, body) {
+       if (!error) {
+         var data = JSON.parse(body);
+         if(!data["error"]){
+           console.log(data[0].name + ": " + data[0].price_usd + " * " + amount + " = " + ( amount * (parseFloat(data[0].price_usd)) ) );
+          //  console.log(data[0].name + ": " + ( amount * (parseFloat(data[0].price_usd)) ));
+         }
+        //  console.log(data);
+       }
+     })
+      // assets_with_price.push(asset_name_with_price);
+   }
 
-    var makeRequest = () => {
-      var assetName = "bitcrystals";
-      var url = "https://api.coinmarketcap.com/v1/ticker/" + assetName;
-
-
-      request(url, function(error, response, body) {
-        if (!error) {
-          var body = JSON.parse(body);
-          var data = body[0];
-          
-
-
-        }
-      })
-    }
-
-
-   makeRequest();
  }
-
 
 
 

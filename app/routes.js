@@ -19,8 +19,8 @@ module.exports = router;
 router.get('/', mainController.showHome);
 
 //maybe for other page
-
 router.use('/assets', assetsController.presentAssets);
+
 
 router.get('/input', inputController.getAddress);
 router.get('/priceassets', priceAssetsController.get_USD_AMNT);

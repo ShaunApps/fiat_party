@@ -1,5 +1,6 @@
 
 const request = require('request');
+const priceassets = require('./priceassets.controller');
 
 module.exports = {
 
@@ -37,7 +38,9 @@ module.exports = {
             newobject.amount = assetamount;
             assets.push(newobject);
           }
-            console.log(assets);
+            // res.render('pages/assets', { assets: assets });
+            priceassets.get_USD_AMNT(assets);
+
         }
 
 
@@ -51,7 +54,7 @@ module.exports = {
 
 
 
-    res.render('pages/assets', { assets: assets });
+
   }
 
 
