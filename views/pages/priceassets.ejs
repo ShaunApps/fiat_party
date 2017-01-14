@@ -1,0 +1,23 @@
+<div class="jumbotron text-center">
+  <h1> Test Dollar Value of Assets </h1>
+</div>
+
+
+
+<table class="table table-border table-hovered table-striped">
+  <thead>
+    <tr>
+      <th>Asset Name</th>
+      <th>USD Value</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% for (var asset of assets) { %>
+      <tr>
+          <td><%= asset.name %></td>
+          <td><%= asset.amount %></td>
+      </tr>
+  <% } %>
+  </tbody>
+</table>
