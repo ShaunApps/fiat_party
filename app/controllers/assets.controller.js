@@ -39,7 +39,9 @@ module.exports = {
             assets.push(newobject);
           }
             // res.render('pages/assets', { assets: assets });
-            priceassets.get_USD_AMNT(assets);
+            var assets_with_prices = priceassets.get_USD_AMNT(assets);
+            console.log(assets_with_prices);
+
 
         }
 
