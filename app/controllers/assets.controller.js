@@ -18,9 +18,11 @@ module.exports = {
       },
        function (error, response, body) {
          if (!error && response.statusCode == 200) {
-           priceassets.get_USD_AMNT(helpercontroller.parseBody(body));
+           (priceassets.get_USD_AMNT(helpercontroller.parseBody(body)));
          }
       })
+
+
 
       var dummyData = [
         { name: 'LTBcoin',

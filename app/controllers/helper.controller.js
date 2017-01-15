@@ -1,7 +1,7 @@
 module.exports = {
 
   parseBody: (body) => {
-    
+
     var assets = [];
     var body = JSON.parse(body);
     var data = body["data"];
