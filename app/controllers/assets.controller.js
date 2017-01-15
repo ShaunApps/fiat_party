@@ -18,6 +18,12 @@ module.exports = {
     var assets = [];
 
 
+    var test_function = (assets) => {
+      var priceassets_object = priceassets.get_USD_AMNT(assets);
+      console.log(priceassets_object);
+
+    }
+
 
     var makeRequest = () => {
       var address = req.body.assetaddress;
@@ -38,13 +44,11 @@ module.exports = {
             newobject.amount = assetamount;
             assets.push(newobject);
           }
+          test_function(assets);
             // res.render('pages/assets', { assets: assets });
-            var assets_with_prices = priceassets.get_USD_AMNT(assets);
-            console.log(assets_with_prices);
-
-
+            // var assets_with_prices = priceassets.get_USD_AMNT(assets);
+            // console.log(assets_with_prices);
         }
-
 
       }
       request(url, callback);

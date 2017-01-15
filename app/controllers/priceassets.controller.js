@@ -8,8 +8,6 @@ module.exports = {
 
   // var assets_with_price =[];
 
-  var return_assets_with_price = () => {
-
     var assets_with_price =[];
 
     for (let i =0; i < assets.length; i++) {
@@ -39,8 +37,6 @@ module.exports = {
    }
     return assets_with_price;
   }
-
- }
 
 
 
