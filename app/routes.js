@@ -23,4 +23,5 @@ router.use('/assets', assetsController.presentAssets);
 
 
 router.get('/input', inputController.getAddress);
-router.get('/priceassets', priceAssetsController.get_USD_AMNT);
+
+// router.get('/priceassets', priceAssetsController.get_USD_AMNT);

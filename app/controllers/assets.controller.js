@@ -1,6 +1,7 @@
 const request = require('request');
 const priceassets = require('./priceassets.controller');
-const Promise = require('bluebird');
+const helpercontroller = require('./helper.controller.js');
+
 
 module.exports = {
 
@@ -11,50 +12,41 @@ module.exports = {
       var url = "https://counterpartychain.io/api/balances/" + address;
 
 
-      function callback(error, response, body) {
-          if (!error && response.statusCode == 200) {
-              var assets = [];
-              var body = JSON.parse(body);
-              var data = body["data"];
+      request({
+        method: 'GET',
+        url: url,
+      },
+       function (error, response, body) {
+         if (!error && response.statusCode == 200) {
+           priceassets.get_USD_AMNT(helpercontroller.parseBody(body));
+         }
+      })
 
-              for (var i = 0; i < data.length; i++) {
-                  var assetname = data[i]["asset"];
-                  var assetamount = data[i]["amount"];
-                  var newobject = {};
-                  newobject.name = assetname;
-
-                  switch (assetname) {
-                    case "XCP":
-                      newobject.name = "Counterparty";
-                      break;
-                    case "SJCX":
-                      newobject.name = "Storjcoin X";
-                      break;
-                    case "PEPECASH":
-                      newobject.name = "pepe-cash";
-                      break;
-                    case "GEMZ":
-                      newobject.name = "gems";
-                      break;
-                    case "FLDC":
-                      newobject.name = "foldingcoin";
-                      break;
-                    default:
-                      newobject.name = assetname;
-                  }
-
-                  newobject.amount = assetamount;
-                  assets.push(newobject);
-              }
-          }
-
-        priceassets.get_USD_AMNT(assets);
-
-          // return assets;
-      }
+      var dummyData = [
+        { name: 'LTBcoin',
+          unit_price: 0.0000200385,
+          asset_amount: 1209.32588510 },
+        { name: 'FoldingCoin',
+          unit_price: 0.000937106,
+          asset_amount: 1.00000000 },
+        { name: 'Bitcrystals',
+          unit_price: 0.103968,
+          asset_amount: 913.14157985 },
+        { name: 'XCP',
+          unit_price: 1.96375,
+          asset_amount: 250.00000000 },
+        { name: 'RarePepe',
+          unit_price: 0.0000200385,
+          asset_amount: 1209.32588510 }
+        ];
 
 
-      request(url, callback)
+
+      res.render('pages/assets', {assets: dummyData});
+
+
+
+
 
     }
 
