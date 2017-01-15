@@ -18,12 +18,6 @@ module.exports = {
     var assets = [];
 
 
-    var test_function = (assets) => {
-      var priceassets_object = priceassets.get_USD_AMNT(assets);
-      console.log(priceassets_object);
-
-    }
-
 
     var makeRequest = () => {
       var address = req.body.assetaddress;
