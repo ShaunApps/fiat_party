@@ -12,6 +12,8 @@ module.exports = {
         var url = "https://counterpartychain.io/api/balances/" + address;
 
 
+
+
         request({
                 method: 'GET',
                 url: url,
@@ -21,6 +23,7 @@ module.exports = {
                     var assets = [];
                     var body = JSON.parse(body);
                     var data = body["data"];
+                    var some_arry = [];
 
                     for (var i = 0; i < data.length; i++) {
                         var assetname = data[i]["asset"];
@@ -54,7 +57,8 @@ module.exports = {
 
 
                     }
-                      priceassets.return_USD_AMNT(assets);
+                    priceassets.return_USD_AMNT(assets, res);
+
                 }
             })
 
