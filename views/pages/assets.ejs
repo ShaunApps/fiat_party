@@ -28,7 +28,7 @@
     <% for (var asset of assets) { %>
       <tr class="warning">
           <td><h4><%= asset.name %></h4></td>
-          <td><%= asset.unit_price %></td>
+          <td>$<%= asset.unit_price %></td>
           <td><%= asset.asset_amount %></td>
           <td>$<%= asset.unit_price * asset.asset_amount %></td>
       </tr>
