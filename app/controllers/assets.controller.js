@@ -21,7 +21,6 @@ module.exports = {
                     var assets = [];
                     var body = JSON.parse(body);
                     var data = body["data"];
-                    var url;
 
                     for (var i = 0; i < data.length; i++) {
                         var assetname = data[i]["asset"];
@@ -51,30 +50,11 @@ module.exports = {
                         }
 
                         newobject.amount = assetamount;
-                        priceassets.return_USD_AMNT(newobject);
+                        assets.push(newobject);
 
-                        url = "https://api.coinmarketcap.com/v1/ticker/" + newobject.name.toLowerCase();
-                        var options = {
-                            uri: url
-                        }
-                        rp(options)
-                            .then(function(body) {
-                                var data1 = JSON.parse(body);
-                                console.log(data1);
-                                if (!data1["error"]) {
-                                    newobject.unit_price = data1[0].price_usd;
-                                }
-                                assets.push(newobject);
-                                console.log(assets);
-                            })
-                            .catch(function (err) {
-                              // console.log("request failed");
-                            });
-
-                        //  assets.push(USD_object);
-                        // console.log(USD_object);
 
                     }
+                      priceassets.return_USD_AMNT(assets);
                 }
             })
 
