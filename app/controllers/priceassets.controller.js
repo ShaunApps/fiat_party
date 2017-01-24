@@ -12,18 +12,21 @@ module.exports = {
         var some_array = [];
 
         function addAllUSDAmounts(some_array) {
-          var USD_SUM = 0;
-          for (i in some_array) {
-            USD_SUM = (i.unit_price * i.asset_amount) + USD_SUM;
-          }
-          return USD_SUM
+            var USD_SUM = 0;
+            for (i in some_array) {
+                USD_SUM = ((some_array[i].unit_price) *
+                    (some_array[i].asset_amount)) + USD_SUM;
+            }
+            return USD_SUM
         }
 
         function callback(some_array) {
-            var total_value = addAllUSDAmounts(some_array);
+            let USD_TOTAL = Math.round(addAllUSDAmounts(some_array) * 100) / 100
+            res.render('pages/assets', {
+                assets: some_array,
+                USD_TOTAL: USD_TOTAL
+            });
 
-            res.render('pages/assets', {assets: some_array});
-          
         }
 
         assets.forEach((item, index, array) => {
