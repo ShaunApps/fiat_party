@@ -10,18 +10,10 @@ module.exports = {
 
         var itemsProcessed = 0;
         var some_array = [];
-
-        function addAllUSDAmounts(some_array) {
-            var USD_SUM = 0;
-            for (i in some_array) {
-                USD_SUM = ((some_array[i].unit_price) *
-                    (some_array[i].asset_amount)) + USD_SUM;
-            }
-            return USD_SUM
-        }
+        var USD_SUM = 0;
 
         function callback(some_array) {
-            let USD_TOTAL = Math.round(addAllUSDAmounts(some_array) * 100) / 100
+            let USD_TOTAL = Math.round(USD_SUM * 100) / 100
             res.render('pages/assets', {
                 assets: some_array,
                 USD_TOTAL: USD_TOTAL
@@ -39,14 +31,12 @@ module.exports = {
                 if (!error) {
                     var data = JSON.parse(body);
                     if (!data["error"]) {
-                        var name = data[0].name;
-                        var unit_price = data[0].price_usd;
-                        var asset_amount = amount;
-                        some_array.push({
-                            name: name,
-                            unit_price: unit_price,
-                            asset_amount: asset_amount
-                        });
+                      USD_SUM = (data[0].price_usd * amount) + USD_SUM
+                      some_array.push({
+                          name: data[0].name,
+                          unit_price: data[0].price_usd,
+                          asset_amount: amount
+                      });
                     }
                 }
                 if (itemsProcessed === array.length) {
