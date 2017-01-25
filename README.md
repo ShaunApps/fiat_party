@@ -1,6 +1,6 @@
 # Fiat Party
 
-What is [Counterparty](www.counterparty.io)?
+What is Counterparty? Check out counterparty.io
 
 Simple app to find the USD total balance in a Counterparty Wallet.
 
