@@ -1,7 +1,4 @@
 const request = require('request');
-const helperpriceassets = require('./priceassets.helper.controller');
-const request_then = require('then-request');
-
 
 module.exports = {
 
@@ -18,6 +15,7 @@ module.exports = {
                 assets: some_array,
                 USD_TOTAL: USD_TOTAL
             });
+
 
         }
 

@@ -1,18 +1,16 @@
 const request = require('request');
-const rp = require('request-promise');
+const WAValidator = require('wallet-address-validator');
 const priceassets = require('./priceassets.controller');
 
 
 module.exports = {
+
 
     presentAssets: (req, res) => {
 
 
         var address = req.body.assetaddress;
         var url = "https://counterpartychain.io/api/balances/" + address;
-
-
-
 
         request({
                 method: 'GET',
@@ -62,11 +60,7 @@ module.exports = {
                 }
             })
 
-
-
-        // res.render('pages/assets', {assets: assets});
-
-
     }
+
 
 }
