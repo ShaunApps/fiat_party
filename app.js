@@ -1,3 +1,4 @@
+process.env.PWD = process.cwd();
 const express = require('express');
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
@@ -10,8 +11,8 @@ var request = require('request');
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(__dirname + '/public'));
 app.use(express.static('public'));
+app.use(express.static(process.env.PWD + '/public'));
 
 app.use(expressLayouts);
 
