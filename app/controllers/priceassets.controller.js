@@ -1,5 +1,6 @@
 const request = require('request');
 
+// this takes the assets from get.assets controller and compares against coinmarketcap
 module.exports = {
 
     return_USD_AMNT: (assets, res) => {

@@ -2,7 +2,7 @@ const request = require('request');
 const WAValidator = require('wallet-address-validator');
 const priceassets = require('./priceassets.controller');
 
-
+// this takes the address from the user and checks its assets
 module.exports = {
 
 
