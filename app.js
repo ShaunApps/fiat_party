@@ -10,7 +10,8 @@ var request = require('request');
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(__dirname + '/public'));
+// app.use(express.static(__dirname + '/public'));
+app.use(express.static('public'))
 app.use(expressLayouts);
 
 app.set('view engine', 'ejs');
