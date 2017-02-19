@@ -14,9 +14,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(express.static(process.env.PWD + '/public'));
 
+
 app.use(expressLayouts);
 
 app.set('view engine', 'ejs');
+
+
 
 
 app.use(require('./app/routes'));
