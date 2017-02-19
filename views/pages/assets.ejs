@@ -2,18 +2,23 @@
 
 
   <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <!-- <img src="http://i.imgur.com/vko9XvA.jpg" width="175" height="175" /> -->
-            </div>
-            <div class="col-md-6">
-              <h3>Total USD Balance: <strong>$<%= USD_TOTAL %></strong> </h3>
-            </div>
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">Total USD Balance</h3>
         </div>
+        <div class="panel-body">
+          <strong>$<%= USD_TOTAL %></strong>
+        </div>
+      </div>
     </div>
 
 
-
+<div class="col-md-12">
 <table class="table table-border table-hovered table-striped">
   <thead>
     <tr class="info">
@@ -35,3 +40,5 @@
   <% } %>
   </tbody>
 </table>
+</div>
+</div>

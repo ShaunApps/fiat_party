@@ -14,3 +14,12 @@ table {
 .footer .container {
   text-align: center;
 }
+
+.panel-success {
+  
+
+}
+
+.panel-body strong {
+  text-align: right;
+}
