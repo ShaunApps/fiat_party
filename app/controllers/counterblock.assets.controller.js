@@ -11,22 +11,26 @@ module.exports = {
 
   retrieveAssets: (req, res) => {
 
-    const address = JSON.stringify(req.body.counterassetaddress);
+    const address = req.body.counterassetaddress;
+    console.log(address);
 
     request({
       method: 'POST',
-      uri: 'http://public.coindaddy.io:4100/api/',
-      headers: {'content-type': 'application/json'},
+      uri: 'http://public.coindaddy.io:4000/api/',
+      headers: {'content-type': 'application/json-rpc'},
+      auth: {'user': 'rpc', 'pass': '1234'},
       body: JSON.stringify({
-            "method": "get_owned_assets",
-            "params": {"addresses": [address]},
+            "method": "get_balances",
+            "params": {
+                "filters": [{"field": "address", "op": "==", "value": address}]
+            },
             "jsonrpc": "2.0",
             "id": 0 }),
 
     },
       function(error, response, body) {
         if (!error) {
-          console.log(response.result);
+          console.log(body);
         } else {
           console.log(error, response.code, response.message);
         }
